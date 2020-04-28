@@ -1,0 +1,23 @@
+#!/bin/bash
+#SBATCH --account=si630w20_class
+#SBATCH --job-name=generation_test
+#SBATCH --mail-type=BEGIN,END
+#SBATCH --partition=gpu
+#SBATCH --gres=gpu:1
+#SBATCH --nodes=1
+#SBATCH --cpus-per-task=1
+#SBATCH --ntasks-per-node=1
+#SBATCH --mem-per-cpu=16gb
+#SBATCH --time=0-2:00:00
+#SBATCH --output=/home/liyixi/hw5/output/generation/%u-%x.log
+
+source activate test_env
+export http_proxy="http://proxy.arc-ts.umich.edu:3128/"
+export https_proxy="http://proxy.arc-ts.umich.edu:3128/"
+export ftp_proxy="http://proxy.arc-ts.umich.edu:3128/"
+export no_proxy="localhost,127.0.0.1,.localdomain,.umich.edu"
+export HTTP_PROXY="${http_proxy}"
+export HTTPS_PROXY="${https_proxy}"
+export FTP_PROXY="${ftp_proxy}"
+export NO_PROXY="${no_proxy}"
+python /home/liyixi/hw5/script/generation/model_openai_gpt.py --task_name=openai_gpt_test --do_test --do_generate --load_model_name=openai_gpt_valid-len64-lr5e-05-epoch4
