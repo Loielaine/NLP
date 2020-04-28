@@ -1,29 +1,3 @@
-# Folder Structure
-hw5
-
-|____data
-
-| |____classification
-
-| |____generation
-
-|____output
-
-| |____classification
-
-| |____fine-tuning
-
-| |____generation
-
-|____script
-
-| |____classification
-
-| |____generation
-
-|____readme.txt
-
- 
 # Task 1 Generation
 
 model: script/generation/model_openai_gpt.py (openai_gpt)
